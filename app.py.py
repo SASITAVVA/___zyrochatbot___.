@@ -38,7 +38,7 @@ os.environ["GROQ_API_KEY"] = groq_api_key
 def init_rag_pipeline():
     # 1. Load Documents
     # Look directly inside the dataset folder that you created!
-    pdf_folder_path = "dataset" 
+    pdf_folder_path = "." 
     
     loader = PyPDFDirectoryLoader(pdf_folder_path)
     documents = loader.load()
