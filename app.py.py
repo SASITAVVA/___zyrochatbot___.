@@ -37,8 +37,8 @@ os.environ["GROQ_API_KEY"] = groq_api_key
 @st.cache_resource(show_spinner="Loading HR Documents & Building Knowledge Base...")
 def init_rag_pipeline():
     # 1. Load Documents
-    # Since you uploaded the PDFs to the main folder, we tell it to look in "." (the current folder)
-    pdf_folder_path = "." 
+    # Look directly inside the dataset folder that you created!
+    pdf_folder_path = "dataset" 
     
     loader = PyPDFDirectoryLoader(pdf_folder_path)
     documents = loader.load()
