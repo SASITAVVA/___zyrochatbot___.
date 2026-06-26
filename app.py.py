@@ -31,7 +31,7 @@ os.environ["GROQ_API_KEY"] = groq_api_key
 @st.cache_resource(show_spinner="Loading HR Documents & Building Knowledge Base...")
 def init_rag_pipeline():
     # 1. Load Documents
-    pdf_folder_path = "dataset" # Make sure this matches where your PDFs are stored when deploying
+    pdf_folder_path = "." # Make sure this matches where your PDFs are stored when deploying
     
     # If the dataset directory doesn't exist, we can't proceed
     if not os.path.exists(pdf_folder_path) or not os.listdir(pdf_folder_path):
@@ -63,7 +63,7 @@ Question:
 Answer:
 """
     prompt = ChatPromptTemplate.from_template(template)
-    llm = ChatGroq(model="llama-3.1-70b-versatile", temperature=0)
+    llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0)
     
     def format_docs(docs):
         return "\n\n".join(doc.page_content for doc in docs)
